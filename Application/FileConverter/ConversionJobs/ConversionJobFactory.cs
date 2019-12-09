@@ -43,6 +43,10 @@ namespace FileConverter.ConversionJobs
                 return new ConversionJob_ImageMagick(conversionPreset, inputFilePath);
             }
 
+            if (inputFileExtension == "svg" && conversionPreset.OutputType == OutputType.Png) {
+              return new ConversionJob_Svg(conversionPreset,inputFilePath);
+            }
+
             if (Helpers.GetExtensionCategory(inputFileExtension) == Helpers.InputCategoryNames.Image ||
                 Helpers.GetExtensionCategory(inputFileExtension) == Helpers.InputCategoryNames.Document)
             {
